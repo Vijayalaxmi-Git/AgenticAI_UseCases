@@ -1,6 +1,7 @@
 import json
 from openai import OpenAI
 
+# Self-Reflection Agent: Tool-Using Agent: “An agent that delegates deterministic tasks to tools and uses LLMs for reasoning.”
 client = OpenAI(base_url="http://localhost:11434/v1/", api_key="ollama")
 
 
