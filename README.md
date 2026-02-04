@@ -1,7 +1,30 @@
 # AgenticAI_UseCases
-Implemted 
-Lesson 1 : Self-Reflection Agent:
-“An agent that evaluates and improves its own outputs before finalizing.”
+# Module 1: Intro to Agentic Workflows (Reflection & Iteration)
+# Self-Reflection Agent: Self Reflection Pattern
+# “An agent that evaluates and improves its own outputs before finalizing.”
 
-Lesson 1 : Tool-Using Agent:
-“An agent that delegates deterministic tasks to tools and uses LLMs for reasoning.”
+# Tool-Using Agent: Tool Use Pattern
+# “An agent that delegates deterministic tasks to tools and uses LLMs for reasoning.”
+
+Planning Pattern
+The agent first creates a plan (steps/subtasks) before executing actions, instead of reacting immediately.
+1. Planner -> Converts goal → steps
+2. Executor
+   - Executes each step
+   - Uses tools / agents
+3. Controller (optional)
+   - Tracks progress
+   - Handles failures
+
+# Module 2: Multi-Agent Collaboration (Role-playing & Handoffs) — DONE ✅
+Multi-agent Collaboration (Two LLMs talking to each other)
+Agent A (The Coder): Writes the initial Python code.
+Agent B (The Reviewer): Acts as a senior engineer to find security flaws
+
+# Module 3: Capabilities (Tool Use) — JUST FINISHED ✅
+# Agentic Design Patterns (Tool Use & Memory)
+
+
+
+
+
