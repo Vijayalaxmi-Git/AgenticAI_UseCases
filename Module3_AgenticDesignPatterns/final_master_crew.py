@@ -1,10 +1,26 @@
-import os, sys, io
+import os, sys, io,shutil
 from crewai import Agent, Task, Crew, LLM, Process
 from crewai.tools import tool
 
-# 1. Windows & Memory Environment Fixes
+# --- AUTOMATED CLEANUP ---
+# This removes the memory folder so you don't have to do it manually
+memory_path = os.path.join(os.getcwd(), ".crewai")
+if os.path.exists(memory_path):
+    try:
+        shutil.rmtree(memory_path)
+        print("🧹 Memory cleared automatically for a fresh local run.", flush=True)
+    except Exception as e:
+        print(f"⚠️ Could not clear memory: {e}", flush=True)
+
+# 1. Force UTF-8 and set Local Memory Defaults
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+
+# --- THE SECRET SAUCE FOR LOCAL MEMORY ---
+os.environ["OPENAI_API_KEY"] = "NA" 
 os.environ["EMBEDDINGS_OLLAMA_MODEL_NAME"] = "nomic-embed-text"
+# This next line tells the CrewAI RAG system where to find Ollama
+os.environ["OLLAMA_BASE_URL"] = "http://localhost:11434"
+# -----------------------------------------
 
 # 2. Setup Local LLM
 local_llm = LLM(model="ollama/llama3.2", base_url="http://localhost:11434")
@@ -31,8 +47,10 @@ researcher = Agent(
     backstory="You are a paranoid security analyst. Your job is to prevent bad code from being written.",
     tools=[security_check],
     llm=local_llm,
+    max_iter=2,           # <--- BRAKE 1: Stop after 3 attempts
+    max_execution_time=60,  # <--- BRAKE 2: Stop after 60 seconds
     verbose=True,
-    allow_delegation=False,
+    allow_delegation=False
 )
 
 coder = Agent(
@@ -42,6 +60,7 @@ coder = Agent(
     llm=local_llm,
     verbose=True,
     allow_delegation=False,
+    max_iter=1
 )
 
 # 5. Define the Collaborative Tasks
@@ -57,13 +76,14 @@ t2 = Task(
     expected_output="Code or a Security Refusal.",
 )
 
-# 6. Form the Master Crew
+# 6. Form the Master Crew (Simplified)
 master_crew = Crew(
     agents=[researcher, coder],
     tasks=[t1, t2],
-    process=Process.sequential,  # This creates the 'Chain' of collaboration
-    memory=True,
-    embedder={"provider": "ollama", "config": {"model": "nomic-embed-text"}},
+    process=Process.sequential,
+    memory=False, # Will now use the env variables above
+    verbose=True,
+    max_rpm=10
 )
 
 if __name__ == "__main__":
