@@ -1,4 +1,4 @@
-# AgenticAI_UseCases 
+# AgenticAI_UseCases
 
 ## Module 1: Intro to Agentic Workflows (Reflection & Iteration)
 
@@ -33,4 +33,10 @@ Agent B (The Reviewer): Acts as a senior engineer to find security flaws
 
 ## Module 4: Evaluations
 
-In standard coding, we use "Unit Tests" (Pass/Fail). In Agentic AI, we use Evals. Because LLMs are probabilistic (they might give different answers every time), we need to run our "Master Crew" multiple times and grade the results.
+In standard coding, we use "Unit Tests" (Pass/Fail).
+In Agentic AI, we use Evals. Because LLMs are probabilistic (they might give different answers every time), we need to run our "Master Crew" multiple times and grade the results.
+--The "Eval" Mindset
+There are three ways to evaluate your agents:
+Human Eval: You look at the output (What you've been doing).
+Deterministic Eval: Checking if the code actually runs or if the math is exactly right.
+LLM-as-a-Judge: Using a stronger model (like GPT-4 or a larger Llama) to grade your smaller model's work.
