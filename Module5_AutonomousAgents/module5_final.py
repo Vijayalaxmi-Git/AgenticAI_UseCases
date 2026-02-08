@@ -8,7 +8,7 @@ os.environ["OPENAI_API_KEY"] = "NA"
 # 2. Local LLM (Using Llama 3.2 as the Boss)
 local_llm = LLM(model="ollama/llama3.2", 
     base_url="http://localhost:11434",
-    timeout=600  # <--- Increase to 600 seconds (10 minutes)
+    timeout=600  # <--- Increase to 600 seconds (10 min)
 )
 
 # 3. Define the Workers (No tasks assigned yet!)
