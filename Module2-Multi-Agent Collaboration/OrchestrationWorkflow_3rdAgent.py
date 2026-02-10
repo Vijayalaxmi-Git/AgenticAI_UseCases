@@ -1,3 +1,6 @@
+# An extended version of Module 2 that introduces a third agent responsible for:
+# Orchestrating the conversation, Managing handoffs, Ensuring quality control, 
+# This demonstrates more complex multi-agent pipelines.
 # Add a third agent (a "Technical Writer" to document the code).
 # The "Coder, Reviewer & Documenter" Team
 # This module demonstrates a multi-agent collaboration pattern in Python.

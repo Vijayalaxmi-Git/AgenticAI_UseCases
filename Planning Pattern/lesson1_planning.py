@@ -1,3 +1,10 @@
+#1. Planner -> Converts goal → steps
+#2. Executor
+#   - Executes each step
+#   - Uses tools / agents
+#3. Controller (optional)
+#   - Tracks progress
+#   - Handles failures
 # Module 1: The "Planning" Pattern
 # This module demonstrates the "Planning" design pattern in Python.
 # The "Planning" pattern involves creating a plan or strategy before executing tasks.

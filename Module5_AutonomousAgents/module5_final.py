@@ -1,3 +1,7 @@
+# A more advanced autonomous workflow combining:
+# Planning,Tool use,Memory,Multi-step execution,Self‑correction
+# This script represents a near‑production autonomous agent pattern.
+
 import os, sys, io
 from crewai import Agent, Task, Crew, LLM, Process
 

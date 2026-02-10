@@ -1,3 +1,4 @@
+# A simple autonomous agent that takes a goal and attempts to complete it using reasoning loops.
 import os, sys, io
 from crewai import Agent, Task, Crew, LLM, Process
 

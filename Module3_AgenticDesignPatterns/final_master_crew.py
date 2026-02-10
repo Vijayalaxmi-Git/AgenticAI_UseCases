@@ -1,3 +1,6 @@
+#  “Master Crew” orchestrator that coordinates multiple agents and tools across modules.
+# Useful for demonstrating:Multi-agent planning,Delegation,Tool integration,High-level orchestration
+
 import os, sys, io,shutil
 from crewai import Agent, Task, Crew, LLM, Process
 from crewai.tools import tool
